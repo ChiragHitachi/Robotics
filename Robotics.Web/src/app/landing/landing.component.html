@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-8">
        <p-dropdown [options]="robos" [(ngModel)]="selectedRobo" optionLabel="name"></p-dropdown>
-        <input type="text" [(ngModel)]="distance" />
+        X: <input type="text" [(ngModel)]="distanceX" />
+        Y: <input type="text" [(ngModel)]="distanceY" />
         <input type="submit" (click)="calculate()" value="Move" />
     </div>
   </div>
