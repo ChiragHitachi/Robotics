@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+       <p-dropdown [options]="robos" [(ngModel)]="selectedRobo"></p-dropdown>
+    </div>
+    <div class="col-md-5">
+        <input type="text" [(ngModel)]="distance" />
+        <input type="submit" (onClick)="calculate()" />
+    </div>
+  </div>
+  <div class="row">
+    <app-bar-chart [chartData]="chartData"></app-bar-chart>
+  </div>  
+</div>
