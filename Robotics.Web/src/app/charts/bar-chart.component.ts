@@ -44,6 +44,21 @@ export class BarChartComponent implements OnChanges {
           text: data.yAxisTitle
         }
       },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: '#FFFFFF',
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+
       series:  data.series
     };
     this.chart = chart(this.chartTarget.nativeElement, options);

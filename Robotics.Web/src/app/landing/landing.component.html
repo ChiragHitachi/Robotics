@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
-       <p-dropdown [options]="robos" [(ngModel)]="selectedRobo"></p-dropdown>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-8">
+       <p-dropdown [options]="robos" [(ngModel)]="selectedRobo" optionLabel="name"></p-dropdown>
         <input type="text" [(ngModel)]="distance" />
-        <input type="submit" (onClick)="calculate()" />
+        <input type="submit" (click)="calculate()" value="Move" />
     </div>
   </div>
   <div class="row">

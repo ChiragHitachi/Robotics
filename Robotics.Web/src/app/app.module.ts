@@ -1,18 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import 'rxjs';
+import 'rxjs/Rx';
+import { LandingComponent } from './landing/landing.component';
+import { BarChartComponent } from './charts/bar-chart.component';
+import { RoboService } from './services/robo.service';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    BarChartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    DropdownModule
   ],
-  providers: [],
+  providers: [
+    RoboService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
