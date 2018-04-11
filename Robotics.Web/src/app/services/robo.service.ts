@@ -2,7 +2,10 @@ import {
   Injectable
 } from '@angular/core';
 import {
-  IRobo, IMovement, IRoboMovement, IDistance
+  IRobo,
+  IMovement,
+  IRoboMovement,
+  IDistance
 } from '../models/robo.model';
 import {
   Observable
@@ -11,69 +14,69 @@ import {
   IResponse
 } from '../models/common.models';
 import {
-  responseStatus
+  responseStatus,
+  color,
+  direction
 } from '../models/enums';
-import { IBarChart } from '../models/bar-chart.model';
+import {
+  IBarChart
+} from '../models/bar-chart.model';
 
 @Injectable()
 export class RoboService {
   getRobos: () => Observable < IResponse < IRobo[] >> ;
-  calculateMovement: (robo: IRobo, distance: IDistance) => Observable <IMovement>;
+  calculateMovement: (robo: IRobo, distance: IDistance) => Observable < IMovement > ;
   private moveHistory: IRoboMovement[] = [];
 
   constructor() {
     const vm = this;
 
     vm.calculateMovement = (robo: IRobo, distance: IDistance) => {
-        let movement: IMovement = {robo: robo, movement: 0};
-        if (robo.direction === 'linear'){
-            movement.movement = distance.x + distance.y;
-        } else
-        {
-            movement.movement = (distance.x + distance.y) * 2;
-        }
+      let movement: IMovement;
+      if (robo && distance) {
+        movement = {
+          robo: robo,
+          movement: this.calculation(distance, robo.direction)
+        };
         let r = this.moveHistory.find((data) => data.robo.name === robo.name);
-        if (r){
-            if (robo.direction === 'linear'){
-            r.movement.forEach((data) => {
-                movement.movement += (data.x + data.y);
-            });
+        if (r) {
+          r.total = movement.movement;
+          movement.movement = r.total;
+        } else {
+          this.moveHistory.push({
+            robo: robo,
+            movement: [{
+              x: distance.x,
+              y: distance.y
+            }],
+            total: movement.movement
+          });
         }
-        else{
-            r.movement.forEach((data) => {
-                movement.movement += ((data.x + data.y) * 2);
-            });
-        }
-            r.movement.push(distance);
-        }
-        else{
-            this.moveHistory.push({robo: robo, movement: [{x: distance.x, y: distance.y}]});
-        }
-      
-        return Observable.of(movement);
+      }
+      return Observable.of(movement);
     };
 
     vm.getRobos = () => {
       const robos: IRobo[] = [{
           name: 'angular-red',
-          color: 'red',
-          direction: 'angular'
+          color: color.red,
+          direction: direction.angular
         },
         {
           name: 'angular-green',
-          color: 'green',
-          direction: 'angular'
+          color: color.green,
+          direction: direction.angular
 
         },
         {
           name: 'react-red',
-          color: 'red',
-          direction: 'linear'
+          color: color.red,
+          direction: direction.linear
         },
         {
           name: 'react-green',
-          color: 'green',
-          direction: 'linear'
+          color: color.green,
+          direction: direction.linear
 
         }
       ];
@@ -85,5 +88,14 @@ export class RoboService {
 
       return Observable.of(data);
     };
+  }
+  private calculation(distance: IDistance, target: direction) {
+      let result : number = 0;
+    if (target === direction.linear) {
+      result = distance.x + distance.y;
+    } else {
+      result = (distance.x + distance.y) * 2;
+    }
+    return result;
   }
 }

@@ -30,3 +30,16 @@ export enum sortOrder {
     Desc = 2
 }
 
+
+export enum color {
+    
+    red = 1,
+    green = 2
+}
+
+
+export enum direction {
+    angular = 1,
+    linear = 2
+}
+
