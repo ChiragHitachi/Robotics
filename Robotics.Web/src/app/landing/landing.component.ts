@@ -68,9 +68,10 @@ from '../models/enums';
       });
 
       values.forEach((value) => {
+        const temp = Object.assign([], dataArr);
         series.push({
             name: value,
-            data: [0, 0],
+            data: temp,
             color: value
           });
       });
