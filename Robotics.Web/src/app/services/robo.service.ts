@@ -26,10 +26,20 @@ import {
 export class RoboService {
   getRobos: () => Observable < IResponse < IRobo[] >> ;
   calculateMovement: (robo: IRobo, distance: IDistance) => Observable < IMovement > ;
+  getTotalDistance : () => number;
   private moveHistory: IRoboMovement[] = [];
 
   constructor() {
     const vm = this;
+    vm.getTotalDistance = () =>{
+      let total: number = 0;
+      if(this.moveHistory){
+        this.moveHistory.forEach((value) => {
+          total += value.total;
+        });
+      }
+      return total;
+    };
 
     vm.calculateMovement = (robo: IRobo, distance: IDistance) => {
       let movement: IMovement;
@@ -92,9 +102,11 @@ export class RoboService {
   private calculation(distance: IDistance, target: direction) {
       let result : number = 0;
     if (target === direction.linear) {
-      result = distance.x + distance.y;
+      result = Math.abs(Math.sqrt(Math.pow(distance.x - distance.x, 2) + Math.pow(distance.y - distance.y, 2)));
+
     } else {
-      result = (distance.x + distance.y) * 2;
+      const radius = Math.abs(Math.sqrt(Math.pow(distance.x - distance.x, 2) + Math.pow(distance.y - distance.y, 2)));
+       result = (2 * Math.PI * radius) + radius;
     }
     return result;
   }

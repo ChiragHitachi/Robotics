@@ -43,6 +43,7 @@ from '../models/enums';
   chartData: IBarChart;
   distanceX: number;
   distanceY: number;
+  totalDistance: number;
   constructor(private roboService: RoboService) {}
   ngOnInit() {
     this.getData();
@@ -81,13 +82,9 @@ from '../models/enums';
         yAxisTitle: 'Distance',
         series: series
       };
-      console.log("buid", this.chartData);
     });
   }
-  public IEnumerable<T> GetValues<T>() {
-    return Object.keys(T)
-    .filter(k => typeof T[k] === "number") as string[];
-  }
+   
 
   public calculate() {
     if (this.selectedRobo && this.selectedRobo.direction) {
@@ -110,8 +107,9 @@ from '../models/enums';
             }
           }
           this.chartData = temp;
+          this.totalDistance = this.roboService.getTotalDistance();
         }
-        console.log(this.chartData);
+         
       });
     }
   }
