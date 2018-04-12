@@ -44,11 +44,17 @@ export class RoboService {
     vm.calculateMovement = (robo: IRobo, distance: IDistance) => {
       let movement: IMovement;
       if (robo && distance) {
+        let r = this.moveHistory.find((data) => data.robo.name === robo.name);
+        let from :IDistance = {x:0, y:0};
+        if(r && r.movement && r.movement.length > 0){
+          const last :IDistance = r[r.movement.length -1];
+          from.x = last.x;
+          from.y = last.y;
+        }
         movement = {
           robo: robo,
-          movement: this.calculation(distance, robo.direction)
+          movement: this.calculation(distance, robo.direction, from )
         };
-        let r = this.moveHistory.find((data) => data.robo.name === robo.name);
         if (r) {
           r.total = movement.movement;
           movement.movement = r.total;
@@ -99,15 +105,16 @@ export class RoboService {
       return Observable.of(data);
     };
   }
-  private calculation(distance: IDistance, target: direction) {
+  private calculation(distance: IDistance, target: direction,  from: IDistance) {
       let result : number = 0;
     if (target === direction.linear) {
-      result = Math.abs(Math.sqrt(Math.pow(distance.x - distance.x, 2) + Math.pow(distance.y - distance.y, 2)));
+      result = Math.abs(Math.sqrt(Math.pow(distance.x - from.x, 2) + Math.pow(distance.y - from.y, 2)));
 
     } else {
-      const radius = Math.abs(Math.sqrt(Math.pow(distance.x - distance.x, 2) + Math.pow(distance.y - distance.y, 2)));
+      const radius = Math.abs(Math.sqrt(Math.pow(distance.x - from.x, 2) + Math.pow(distance.y - from.y, 2)));
        result = (2 * Math.PI * radius) + radius;
     }
+    alert(result);
     return result;
   }
 }
