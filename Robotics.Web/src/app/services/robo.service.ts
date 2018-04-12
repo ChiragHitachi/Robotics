@@ -47,7 +47,7 @@ export class RoboService {
         let r = this.moveHistory.find((data) => data.robo.name === robo.name);
         let from :IDistance = {x:0, y:0};
         if(r && r.movement && r.movement.length > 0){
-          const last :IDistance = r[r.movement.length -1];
+          const last :IDistance = r.movement[r.movement.length -1];
           from.x = last.x;
           from.y = last.y;
         }
@@ -56,7 +56,7 @@ export class RoboService {
           movement: this.calculation(distance, robo.direction, from )
         };
         if (r) {
-          r.total = movement.movement;
+          r.total += movement.movement;
           movement.movement = r.total;
         } else {
           this.moveHistory.push({
