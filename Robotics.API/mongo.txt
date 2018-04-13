@@ -1,0 +1,16 @@
+mongod --config c:\Chirag\mongodb\test.cfg
+mongo 
+> use admin
+> db.createUser({user:'admin', pwd:'password', roles:[{role:'root', db:'admin'}, {role:'readWrite', db:'RoboDB'}]})
+> use RoboDB
+> db.robos.insert({name:'angular-red', color:'red', direction:'angular'});
+WriteResult({ "nInserted" : 1 })
+> db.robos.insert({name:'linear-red', color:'red', direction:'linear'});
+WriteResult({ "nInserted" : 1 })
+> db.robos.update({name:'linear-red'}, {$set:{updatedOn:new Date('02/02/2018'), updatedBy:'admin'}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.robos.update({name:'angular-red'}, {$set:{updatedOn:new Date(), updatedBy:'admin'}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.robos.find({})
+
+

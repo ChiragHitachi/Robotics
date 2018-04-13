@@ -14,6 +14,9 @@ namespace Robotics.API.Models
 
         [BsonElement("color")]
         public string Color {get;set;}
+        
+        [BsonElement("direction")]
+        public string Direction {get;set;}
 
         [BsonElement("updatedOn")]
         public DateTime UpdatedOn { get; set; } = DateTime.Now;

@@ -18,7 +18,7 @@ namespace Robotics.API.Context
     {
         get
         {
-            return _database.GetCollection<Robo>("Robo");
+            return _database.GetCollection<Robo>("robos");
         }
     }
 
