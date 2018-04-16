@@ -44,7 +44,8 @@ namespace Robotics.API.Controllers {
                     signingCredentials: creds);
 
                 return new  OkObjectResult(new {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                    access_token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expires = token.ValidTo
                 });
             }
 

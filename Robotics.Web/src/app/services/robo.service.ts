@@ -5,7 +5,8 @@ import {
   IRobo,
   IMovement,
   IRoboMovement,
-  IDistance
+  IDistance,
+  IDisplayDistance
 } from '../models/robo.model';
 import {
   Observable
@@ -26,26 +27,48 @@ import {
 export class RoboService {
   getRobos: () => Observable < IResponse < IRobo[] >> ;
   calculateMovement: (robo: IRobo, distance: IDistance) => Observable < IMovement > ;
-  getTotalDistance : () => number;
+  getTotalDistance : () => IDisplayDistance[] ;
   private moveHistory: IRoboMovement[] = [];
 
   constructor() {
     const vm = this;
+
     vm.getTotalDistance = () =>{
       let total: number = 0;
+      let displayVals : IDisplayDistance[] = [];
+
       if(this.moveHistory){
         this.moveHistory.forEach((value) => {
+          let r: IDisplayDistance = displayVals.find((data) => data.option === color[value.robo.color]);
+          if (r) {
+            r.distance += value.total;
+          }
+          else{
+            displayVals.push({option:color[value.robo.color], distance : value.total});
+          }
+          let d: IDisplayDistance = displayVals.find((data) => data.option === direction[value.robo.direction]);
+          if (d) {
+            d.distance += value.total;
+          }
+          else{
+            displayVals.push({option:direction[value.robo.direction], distance : value.total});
+          }
           total += value.total;
+
         });
       }
-      return total;
+      displayVals.push({option:"all", distance : total});
+      
+      return displayVals;
     };
 
     vm.calculateMovement = (robo: IRobo, distance: IDistance) => {
       let movement: IMovement;
       if (robo && distance) {
         let r = this.moveHistory.find((data) => data.robo.name === robo.name);
+        
         let from :IDistance = {x:0, y:0};
+
         if(r && r.movement && r.movement.length > 0){
           const last :IDistance = r.movement[r.movement.length -1];
           from.x = last.x;
@@ -72,6 +95,7 @@ export class RoboService {
       return Observable.of(movement);
     };
 
+    // add any new color and the application should still work with minimum changes
     vm.getRobos = () => {
       const robos: IRobo[] = [{
           name: 'angular-red',

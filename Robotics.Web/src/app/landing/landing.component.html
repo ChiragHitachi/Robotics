@@ -10,7 +10,7 @@
   <div class="row">
     <app-bar-chart [chartData]="chartData"></app-bar-chart>
   </div> 
-  <div class="row">
-    Total distance travelled by all robots: {{totalDistance}} 
+  <div class="row" *ngFor="let d of totalDistance">
+    Total distance travelled by {{d.option}} robots: {{d.distance}} 
   </div>
 </div>

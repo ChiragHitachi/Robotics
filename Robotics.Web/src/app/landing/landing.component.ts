@@ -7,7 +7,8 @@ from '@angular/core';
 import {
   IRobo,
   ISeries,
-  IDistance
+  IDistance,
+  IDisplayDistance
 }
 
 from '../models/robo.model';
@@ -43,12 +44,13 @@ from '../models/enums';
   chartData: IBarChart;
   distanceX: number;
   distanceY: number;
-  totalDistance: number;
+  totalDistance: IDisplayDistance[];
   constructor(private roboService: RoboService) {}
   ngOnInit() {
     this.getData();
   }
   private getData() {
+    //dynamic creation of chart. minimum changes required when new color is added.
     this.roboService.getRobos().subscribe((result) => {
       result.data.forEach((r) => {
         this.robos.push(r);
@@ -95,23 +97,27 @@ from '../models/enums';
           let temp = Object.assign({}, this.chartData);
           this.chartData = null;
           if (movement.robo.direction === direction.angular) {
-            if (movement.robo.color === color.red) {
-              temp.series[0].data[0] = movement.movement;
-            } else {
-              temp.series[1].data[0] = movement.movement;
-            }
+            this.ValueforColor(0, temp, movement.movement, color[movement.robo.color]);
           } else {
-            if (movement.robo.color === color.red) {
-              temp.series[0].data[1] = movement.movement;
-            } else {
-              temp.series[1].data[1] = movement.movement;
-            }
+            this.ValueforColor(1, temp, movement.movement, color[movement.robo.color]);
           }
           this.chartData = temp;
           this.totalDistance = this.roboService.getTotalDistance();
         }
-         
       });
     }
+  }
+
+  private ValueforColor(current :number, temp: IBarChart, movement : number, col: string) {
+    const values = Object.keys(color)
+    .filter(k => typeof color[k] === "number") as string[];
+    let i: number = 0;
+
+    values.forEach((v) => {
+      if(v === col){
+        temp.series[i].data[current] = movement;
+      }
+      i++;
+    });
   }
 }

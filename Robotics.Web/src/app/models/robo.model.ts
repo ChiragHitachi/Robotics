@@ -28,3 +28,8 @@ export interface ISeries {
     data: number[];
     color: string;
 }
+
+export interface IDisplayDistance {
+    option: string;
+    distance: number;
+}
