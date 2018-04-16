@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Robotics.API.Helpers;
 using Robotics.API.Models;
@@ -19,6 +20,8 @@ namespace Robotics.API.Controllers
 
     [NoCache]
         [HttpGet]
+     [Authorize]
+        
         public async Task<IEnumerable<Robo>> Get()
         {
             return await _roboRepository.GetAllRobos();
@@ -27,9 +30,18 @@ namespace Robotics.API.Controllers
     
         [NoCache] 
         [HttpGet("{name}")]
+     [Authorize]
+        
         public async Task<Robo> Get(string name)
         {
             return await _roboRepository.GetRobo(name) ?? new Robo();
+        }
+
+        [Authorize(Policy = "TrainedStaffOnly")]
+        [HttpPost]
+         public async Task<bool> Post([FromBody]Robo robo)
+        {
+            return await _roboRepository.AddRobo(robo);
         }
 
     }

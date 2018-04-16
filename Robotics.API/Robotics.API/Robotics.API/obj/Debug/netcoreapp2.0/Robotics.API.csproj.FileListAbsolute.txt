@@ -1,0 +1,10 @@
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\bin\Debug\netcoreapp2.0\Robotics.API.deps.json
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\bin\Debug\netcoreapp2.0\Robotics.API.runtimeconfig.json
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\bin\Debug\netcoreapp2.0\Robotics.API.runtimeconfig.dev.json
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\bin\Debug\netcoreapp2.0\Robotics.API.dll
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\bin\Debug\netcoreapp2.0\Robotics.API.pdb
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\obj\Debug\netcoreapp2.0\Robotics.API.csproj.CoreCompileInputs.cache
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\obj\Debug\netcoreapp2.0\Robotics.API.AssemblyInfoInputs.cache
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\obj\Debug\netcoreapp2.0\Robotics.API.AssemblyInfo.cs
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\obj\Debug\netcoreapp2.0\Robotics.API.dll
+C:\Chirag\Robotics2\Robotics.API\Robotics.API\Robotics.API\obj\Debug\netcoreapp2.0\Robotics.API.pdb

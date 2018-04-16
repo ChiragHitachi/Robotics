@@ -8,7 +8,7 @@ namespace Robotics.API.Repositories
     {
          Task<IEnumerable<Robo>> GetAllRobos();
          Task<Robo> GetRobo(string name);
-         Task<bool> AddNote(Robo item);
-         Task<bool> UpdateNote(string name, Robo item);
+         Task<bool> AddRobo(Robo item);
+         Task<bool> UpdateRobo(string name, Robo item);
     }
 }

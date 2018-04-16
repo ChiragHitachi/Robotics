@@ -45,7 +45,7 @@ namespace Robotics.API.Repositories
             }
         }    
 
-         public async Task<bool> AddNote(Robo item)
+         public async Task<bool> AddRobo(Robo item)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Robotics.API.Repositories
             }
         }
 
-         public async Task<bool> UpdateNote(string name, Robo item)
+         public async Task<bool> UpdateRobo(string name, Robo item)
         {
             try
             {
