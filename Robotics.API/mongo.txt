@@ -14,3 +14,17 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > db.robos.find({})
 
 
+> db.roboMoveHistory.insert({name:'linear-red', color:'red', direction:'linear', distance:[{x:22,y:11}, {x:22, y:11}]});
+WriteResult({ "nInserted" : 1 })
+ 
+> db.roboMoveHistory.update({name:'linear-red'}, {$set:{updatedOn:new Date(), updatedBy:'admin'}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.roboMoveHistory.find({});
+{ "_id" : ObjectId("5ad72b6bc573082731bef0fc"), "name" : "linear-red", "color" : "red", "direction" : "linear", "distance" : [ { "x" : 22, "y" : 11 }, { "x" : 22, "y" : 11 } ], "updatedBy" : "admin", "updatedOn" : ISODate("2018-04-18T11:27:33.810Z") }
+> db.roboMoveHistory.insert({name:'angular-red', color:'red', direction:'angular', distance:[{x:11,y:5}, {x:11, y:5}]});
+WriteResult({ "nInserted" : 1 })
+> db.roboMoveHistory.update({name:'angular-red'}, {$set:{updatedOn:new Date(), updatedBy:'admin'}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.roboMoveHistory.find({});
+{ "_id" : ObjectId("5ad72b6bc573082731bef0fc"), "name" : "linear-red", "color" : "red", "direction" : "linear", "distance" : [ { "x" : 22, "y" : 11 }, { "x" : 22, "y" : 11 } ], "updatedBy" : "admin", "updatedOn" : ISODate("2018-04-18T11:27:33.810Z") }
+{ "_id" : ObjectId("5ad72be0c573082731bef0fd"), "name" : "angular-red", "color" : "red", "direction" : "angular", "distance" : [ { "x" : 11, "y" : 5 }, { "x" : 11, "y" : 5 } ], "updatedBy" : "admin", "updatedOn" : ISODate("2018-04-18T11:28:44.355Z") }

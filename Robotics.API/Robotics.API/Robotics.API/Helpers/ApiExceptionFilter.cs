@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Robotics.API.Models.Helpers
+namespace Robotics.API.Helpers
 {
     public class ApiExceptionFilter : ExceptionFilterAttribute
     {

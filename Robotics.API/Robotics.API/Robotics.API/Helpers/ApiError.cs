@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
 
-namespace Robotics.API.Models.Helpers
+namespace Robotics.API.Helpers
 {
      public class ApiException : Exception
     {
