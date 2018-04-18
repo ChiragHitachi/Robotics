@@ -13118,11 +13118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\Robotics.API.csproj",
+      "projectUniqueName": "C:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\Robotics.API.csproj",
       "projectName": "Robotics.API",
-      "projectPath": "c:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\Robotics.API.csproj",
+      "projectPath": "C:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\Robotics.API.csproj",
       "packagesPath": "C:\\Users\\Chirag.Gupta\\.nuget\\packages\\",
-      "outputPath": "c:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\obj\\",
+      "outputPath": "C:\\Chirag\\Robotics2\\Robotics.API\\Robotics.API\\Robotics.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

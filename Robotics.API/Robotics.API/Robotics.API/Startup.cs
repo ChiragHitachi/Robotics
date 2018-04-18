@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Robotics.API.Context;
 using Robotics.API.Models;
+using Robotics.API.Models.Helpers;
 using Robotics.API.Repositories;
 using Swashbuckle.AspNetCore.Swagger;
 namespace Robotics.API {
@@ -83,6 +84,7 @@ namespace Robotics.API {
                 options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
                 options.Database = Configuration.GetSection("MongoConnection:Database").Value;
             }); 
+            services.AddTransient < ApiExceptionFilter > ();
 
             services.AddTransient < RoboContext > ();
             services.AddTransient < IRoboRepository, RoboRepository > ();

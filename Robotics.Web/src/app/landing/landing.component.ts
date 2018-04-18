@@ -50,7 +50,7 @@ from '../models/enums';
     this.getData();
   }
   private getData() {
-    //dynamic creation of chart. minimum changes required when new color is added.
+    // dynamic creation of chart. minimum changes required when new color is added.
     this.roboService.getRobos().subscribe((result) => {
       result.data.forEach((r) => {
         this.robos.push(r);
@@ -59,10 +59,10 @@ from '../models/enums';
       let categories: string[] = [];
       let series: ISeries[] = [];
       let dataArr: number[] = [];
-      let values = Object.keys(color)
-      .filter(k => typeof color[k] === "number") as string[];;
+      const values = Object.keys(color)
+      .filter(k => typeof color[k] === 'number') as string[];;
       let dirValues = Object.keys(direction)
-      .filter(k => typeof direction[k] === "number") as string[];
+      .filter(k => typeof direction[k] === 'number') as string[];
 
       dirValues.forEach((value) => {
         categories.push(value);
@@ -87,11 +87,10 @@ from '../models/enums';
       };
     });
   }
-   
 
   public calculate() {
     if (this.selectedRobo && this.selectedRobo.direction) {
-        let dist :IDistance = {x: this.distanceX, y: this.distanceY};
+        let dist: IDistance = {x: this.distanceX, y: this.distanceY};
       this.roboService.calculateMovement(this.selectedRobo,  dist).subscribe((movement) => {
         if (movement) {
           let temp = Object.assign({}, this.chartData);
@@ -108,13 +107,13 @@ from '../models/enums';
     }
   }
 
-  private ValueforColor(current :number, temp: IBarChart, movement : number, col: string) {
+  private ValueforColor(current: number, temp: IBarChart, movement: number, col: string) {
     const values = Object.keys(color)
-    .filter(k => typeof color[k] === "number") as string[];
+    .filter(k => typeof color[k] === 'number') as string[];
     let i: number = 0;
 
     values.forEach((v) => {
-      if(v === col){
+      if (v === col){
         temp.series[i].data[current] = movement;
       }
       i++;
