@@ -11,7 +11,6 @@ namespace Robotics.API.Repositories {
     public class RoboRepository : IRoboRepository {
         private readonly RoboContext _context = null;
         public RoboRepository (IOptions<Settings> settings)
-
         {
             _context = new RoboContext (settings);
         }
