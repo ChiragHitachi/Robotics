@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Robotics.API.Helpers;
-using Robotics.API.Helpers;
 using Robotics.API.Models;
 using Robotics.API.Repositories;
 

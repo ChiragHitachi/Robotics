@@ -6,7 +6,9 @@ import { HttpModule } from '@angular/http';
 
 import { APP_ROUTING } from './app.routing';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
     imports: [
@@ -17,7 +19,9 @@ import { HomeComponent } from './home/home.component';
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        RegisterComponent,
+        LoginComponent
     ],
     bootstrap: [
         AppComponent

@@ -18,7 +18,7 @@ describe('AppComponent', () => {
 
     // Extremely basic example test. Just checks that the created Component is the type we expect.
     it('creates the component', async(() => {
-        let fixture = TestBed.createComponent(AppComponent);
+        const fixture = TestBed.createComponent(AppComponent);
 
         expect(fixture.componentInstance instanceof AppComponent).toBe(true);
     }));
