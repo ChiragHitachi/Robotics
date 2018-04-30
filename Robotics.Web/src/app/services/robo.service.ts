@@ -34,7 +34,7 @@ export class RoboService {
     const vm = this;
 
     vm.getTotalDistance = () =>{
-      let total: number = 0;
+      let total = 0;
       let displayVals : IDisplayDistance[] = [];
 
       if(this.moveHistory){
@@ -57,8 +57,8 @@ export class RoboService {
 
         });
       }
-      displayVals.push({option:"all", distance : total});
-      
+      displayVals.push({option:'all', distance : total});
+
       return displayVals;
     };
 

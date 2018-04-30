@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Robotics.API.Helpers;
 using Robotics.API.Models;
 using Robotics.API.Repositories;
@@ -14,9 +16,12 @@ namespace Robotics.API.Controllers {
     [ResponseCache (Location = ResponseCacheLocation.None, NoStore = true)]
     public class RoboController {
         private readonly IRoboRepository _roboRepository;
-
-        public RoboController (IRoboRepository roboRepository) {
+        private BaseUrl setting;
+        public RoboController (IRoboRepository roboRepository, IOptions<BaseUrl> setting, IOptions<AppSetting> appSettings) {
             _roboRepository = roboRepository;
+            this.setting = setting.Value;
+            
+            Console.Write(this.setting.baseUrl.Length);
         }
 
         [NoCache]
@@ -24,6 +29,7 @@ namespace Robotics.API.Controllers {
         [Authorize]
 
         public async Task<IEnumerable<Robo>> Get () {
+            
             return await _roboRepository.GetAllRobos ();
         }
 

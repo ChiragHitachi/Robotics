@@ -50,6 +50,9 @@ namespace Robotics.API {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+             services.Configure<BaseUrl>(Configuration.GetSection("baseUrl"));
+             services.Configure<AppSetting>(Configuration.GetSection("AppSetting"));
+
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
@@ -87,7 +90,7 @@ namespace Robotics.API {
             services.AddTransient < ApiExceptionFilter > ();
 
             services.AddTransient < RoboContext > ();
-            services.AddTransient < IRoboRepository, RoboRepository > ();
+            services.AddScoped < IRoboRepository, RoboRepository > ();
 
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new Info {

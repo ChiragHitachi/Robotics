@@ -1,6 +1,19 @@
 <div class="tyn-app">
     <h1>App!</h1>
 
+    <ng-template #estimateTemplate1 >
+        <div> Welcome </div>
+    </ng-template>
+    <ng-template #estimateTemplate2 >
+        <div> Welcome Chirag</div>
+    </ng-template>
+    <ng-container 
+       *ngTemplateOutlet="dynamicTemplate">
+    </ng-container>
+    <app-tabs>
+        <app-tab tabTitle="Tab 1">Tab 1 Content</app-tab>
+        <app-tab tabTitle="Tab 2">Tab 2 Content</app-tab>
+      </app-tabs>
     <main>
         <router-outlet></router-outlet>
     </main>

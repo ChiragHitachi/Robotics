@@ -9,6 +9,8 @@ import { APP_ROUTING } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { TabComponent } from './controls/tab.component';
+import { TabsComponent } from './controls/tabs.component';
 
 @NgModule({
     imports: [
@@ -21,7 +23,9 @@ import { LoginComponent } from './components/login/login.component';
         AppComponent,
         HomeComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        TabComponent,
+        TabsComponent
     ],
     bootstrap: [
         AppComponent
